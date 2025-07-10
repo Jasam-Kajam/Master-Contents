@@ -1,0 +1,83 @@
+<?php
+session_start();
+$title = "📚 Master Content Creations";
+$year = date("Y");
+$isAdmin = isset($_SESSION['admin_logged_in']);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><?php echo $title; ?></title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+    header {
+      background-color: #7c3aed;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      color: #111827;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      background: #ede9fe;
+    }
+    .card span {
+      font-size: 40px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <header><?php echo $title; ?></header>
+
+  <div class="grid">
+    <a href="pdfs.html" class="card"><span>📄</span>PDFs</a>
+    <a href="videos.html" class="card"><span>🎥</span>Videos</a>
+    <a href="texts.html" class="card"><span>📚</span>Website Creation Tutorials</a>
+    <a href="images.html" class="card"><span>🖼️</span>Images</a>
+    <a href="texts.html" class="card"><span>📝</span>Text Notes</a>
+  </div>
+
+  <footer>
+    <?php if ($isAdmin): ?>
+      <a href="admin.php">🔧 Admin Dashboard</a> |
+      <a href="logout.php">🚪 Logout</a><br>
+    <?php else: ?>
+      <a href="login.php">🔐 Admin Login</a><br>
+    <?php endif; ?>
+    © <?php echo $year; ?> Wafula Educational Posts
+  </footer>
+</body>
+</html>
